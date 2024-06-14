@@ -56,4 +56,7 @@ if (login.two_factor_required) {
 
 console.clear()
 
-await instagram(`/friendships/${login.logged_in_user.pk}/following`, {}).then(console.log)
+await instagram(`/friendships/${login.logged_in_user.pk}/followers`, {
+    max_id: "0",
+    rank_token: crypto.randomUUID()
+}).then(console.log)
