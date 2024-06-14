@@ -11,7 +11,8 @@ const seed = crypto
 const device_id = `android-${crypto
     .createHash("md5")
     .update(seed + "12345")
-    .digest("hex").slice(0, 16)}`
+    .digest("hex")
+    .slice(0, 16)}`
 
 const sign = (data: object) => `ig_sig_key_version=4&signed_body=${crypto
     .createHmac("SHA256", "99e16edcca71d7c1f3fd74d447f6281bd5253a623000a55ed0b60014467a53b1")
@@ -55,6 +56,4 @@ if (login.two_factor_required) {
 
 console.clear()
 
-await instagram(`/friendships/${login.logged_in_user.pk}/following`, {
-
-})
+await instagram(`/friendships/${login.logged_in_user.pk}/following`, {}).then(console.log)
